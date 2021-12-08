@@ -7,9 +7,9 @@ class Puck:
     def __init__(self, lower_range, upper_range):
         self.__lower_range = lower_range
         self.__upper_range = upper_range
+        self.__centers = []
         self.__velocity = None
-        self.__center = (0,0)
-        self.__lastCenter = (0,0)
+        self.__center = None
         self.__radius = None
 
     # Get the lower range of HSV.
@@ -21,9 +21,8 @@ class Puck:
         return self.__upper_range
 
     # Set the center for the puck.
-    def set_center(self, newCenter):
-        self.__lastCenter = center
-        self.__center = newCenter
+    def set_center(self, center):
+        self.__center = center
         
     # Set the radius of the puck.
     def set_radius(self, radius):
@@ -32,11 +31,10 @@ class Puck:
     # Get the center of the puck.
     def get_center(self):  
         return self.__center
-
-        # Get the center of the puck.
-    def get_lastCenter(self):  
-        return self.__center
         
+    # Get the queue of centers.
+    def get_centers(self):
+        return self.__centers
       
     # Calculate the speed and direction of the puck.
     def calculate_velocity(self, time):
